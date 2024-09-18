@@ -85,6 +85,24 @@ client.on('message', async (msg) => {
 });
 ```
 
+### Sending Files from a Buffer
+
+You can also manipulate data from other formats and create a new MessageMedia object:
+
+```javascript
+const { MessageMedia } = require('whatsapp-web.js');
+
+client.on('message', async (msg) => {
+    if (msg.body === '!send-media') {
+        // Create an buffer object
+        const someBuffer = Buffer.from(...);
+
+        const media = new MessageMedia('mime/type', someBuffer.toString("base64"));
+        await client.sendMessage(msg.from, media);
+    }
+});
+```
+
 ### Caveat for Sending Videos and GIFs
 
 Whatsapp-web.js uses [Puppeteer](https://github.com/Puppeteer/Puppeteer), which comes bundled with the Chromium browser, an open source version of the popular Google Chrome browser. Since AAC and H.264 are licensed formats, they are not supported by Chromium. More info on this can be found on the [Puppeteer documentation](https://developer.chrome.com/docs/puppeteer/faq#what_features_does_puppeteer_not_support).
