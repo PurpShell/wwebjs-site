@@ -26,7 +26,7 @@ Getting into bot development with whatsapp-web.js is thrilling, but there are ce
 
 If you are a complete beginner, please take your time to learn more about the basics and come back with a better understanding of JavaScript and Node.js. Here are some free educational resources:
 
-- [JavaScript Basics](https://www.udacity.com/course/javascript-basics--ud804)
+- [JavaScript Basics](https://www.udacity.com/course/intro-to-javascript--cd2073)
 - [Modern JavaScript tutorials and examples](https://javascript.info/)
 - [Codecademy with it's interactive JavaScript course](https://www.codecademy.com/learn/introduction-to-javascript)
 - [NodeSchool learns you JavaScirpt and Node.js](https://nodeschool.io/)
