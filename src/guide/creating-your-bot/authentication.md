@@ -266,6 +266,65 @@ const client = new Client({
 });
 ```
 
+#### Cloud Storage for Firebase (Firebase Storage) Store
+
+Before you can use this Auth strategy you need to install the [`wwebjs-firebase-storage`](https://github.com/vedantmgoyal9/wwebjs-firebase-storage) module in your terminal:
+
+<CodeGroup>
+<CodeGroupItem title="NPM" active>
+
+```bash
+npm install wwebjs-firebase-storage
+```
+
+</CodeGroupItem>
+<CodeGroupItem title="YARN">
+
+```bash
+yarn add wwebjs-firebase-storage
+```
+
+</CodeGroupItem>
+<CodeGroupItem title="PNPM">
+
+```bash
+pnpm add wwebjs-firebase-storage
+```
+
+</CodeGroupItem>
+</CodeGroup>
+
+Once the package is installed, you have to import it and pass it to the `RemoteAuth`strategy as follows:
+
+```js
+import { Client, RemoteAuth } from 'whatsapp-web.js';
+import { initializeApp, getStorage, FirebaseStorageStore } from 'wwebjs-firebase-storage';
+import qrcode_terminal from 'qrcode-terminal';
+const app = initializeApp({
+    apiKey: <firebase-api-key>,
+    projectId: <firebase-project-id>,
+    storageBucket: <firebase-storage-bucket>,
+});
+const client = new Client({
+    authStrategy: new RemoteAuth({
+        store: new FirebaseStorageStore({
+            firebaseStorage: getStorage(app),
+            // sessionPath: 'sessions-whatsapp-web.js', <- optional setting to save in a sub-directory
+        }),
+        backupSyncIntervalMs: 600000,
+    }),
+    ... // other options
+});
+client.on('qr', qr => {
+    qrcode_terminal.generate(qr, {small: true});
+});
+client.on('remote_session_saved', () => console.log('Remote session saved!'));
+client.on('authenticated', () => console.log('Authenticated!'));
+client.on('auth_failure', () => console.log('Authentication failed!'));
+client.on('ready', () => console.log('Client is ready!'));
+client.initialize();
+```
+
 ### Session Saved
 
 After the initial QR scan to link the device, RemoteAuth takes about `1 minute` to successfully save the WhatsApp session into the remote database, therefore the ready event does not mean the session has been saved yet. In order to listen to this event, you can now use the following:
