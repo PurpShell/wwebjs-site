@@ -29,7 +29,7 @@ If you are a complete beginner, please take your time to learn more about the ba
 - [JavaScript Basics](https://www.udacity.com/course/javascript-basics--ud804)
 - [Modern JavaScript tutorials and examples](https://javascript.info/)
 - [Codecademy with it's interactive JavaScript course](https://www.codecademy.com/learn/introduction-to-javascript)
-- [NodeSchool learns you JavaScirpt and Node.js](https://nodeschool.io/)
+- [NodeSchool learns you JavaScript and Node.js](https://nodeschool.io/)
 - [Alternative Node.js tutorials on W3Schools](https://www.w3schools.com/nodejs/default.asp)
 - [Node.js Documentation](https://nodejs.org/en/docs/)
   
